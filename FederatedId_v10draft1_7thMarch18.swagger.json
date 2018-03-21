@@ -1,8 +1,7 @@
 {
 	"swagger": "2.0",
-	"host": "put.your.endpoint.here",
 	"info": {
-		"description": "This is Swagger UI environment generated for the TMF UserRoles and Permissions specification",
+		"description": "This is Swagger UI environment generated for the TMF FederatedID specification",
 		"license": {
 			"name": "Apache 2.0",
 			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -10,8 +9,15 @@
 		"title": "Federated ID",
 		"version": "1.0"
 	},
-	"basePath": "/openid/v1",
+	"host": "serverRoot",	
+	"basePath": "/tmf-api/openid/v1",
 	"schemes": ["http"],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],  	
 	"definitions": {
 		"UserInfoType": {    
 		  "properties": {
