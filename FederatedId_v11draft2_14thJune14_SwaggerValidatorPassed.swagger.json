@@ -1,0 +1,470 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Swagger UI environment generated for the TMF FederatedID specification",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "title": "Federated ID",
+    "version": "1.0"
+  },
+  "host": "serverRoot",
+  "basePath": "/tmf-api/openid/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "UserInfoType": {
+      "properties": {
+        "sub": {
+          "type": "string",
+          "description": "Subject - Unique Identifier for the End-User"
+        },
+        "name": {
+          "type": "string",
+          "description": "End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences"
+        },
+        "given_name": {
+          "type": "string",
+          "description": "Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters"
+        },
+        "family_name": {
+          "type": "string",
+          "description": "Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters"
+        },
+        "middle_name": {
+          "type": "string",
+          "description": "Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael"
+        },
+        "preferred_username": {
+          "type": "string",
+          "description": "Shorthand name by which the End-User wishes to be referred to at the RP, such as janedoe or j.doe. This value MAY be any valid JSON string including special characters such as @, /, or whitespace"
+        },
+        "email": {
+          "type": "string",
+          "description": "End-User's preferred e-mail address. Its value MUST conform to the [RFC5322] addr-spec syntax"
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "End-User's preferred telephone number. [E.164] is RECOMMENDED as the format of this Claim, for example, +1 (425) 555-1212 or +56 82) 687 2400. If the phone number contains an extension, it is RECOMMENDED that the extension be represented using the [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678"
+        },
+        "gender": {
+          "type": "string",
+          "description": "End-User's gender. Values defined by this specification are female and male. Other values MAY be used when neither of the defined values are applicable"
+        },
+        "birthdate": {
+          "type": "string",
+          "description": "End-User's birthday, represented as an [ISO8601-2004] YYYY-MM-DD format. The year MAY be 0000, indicating that it is omitted. To represent only the year, YYYY format is allowed. Note that depending on the underlying platform's date related function, providing just year can result in varying month and day, so the implementers need to take this factor into account to correctly process the dates"
+        },
+        "locale": {
+          "type": "string",
+          "description": "End-User's locale, represented as a [RFC5646] language tag. This is typically an [ISO639-1] language code in lowercase and an [ISO3166-1] country code in uppercase, separated by a dash. For example, en-US or fr-CA. As a compatibility note, some implementations have used an underscore as the separator rather than a dash, for example, en_US"
+        },
+        "zoneinfo": {
+          "type": "string",
+          "description": "String from zoneinfo time zone database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles"
+        },
+        "profile": {
+          "type": "string",
+          "description": "URL of the End-User's profile page. The contents of this Web page SHOULD be about the End-User"
+        },
+        "picture": {
+          "type": "string",
+          "description": "URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the End-User, rather than an arbitrary photo taken by the End-User"
+        },
+        "website": {
+          "type": "string",
+          "description": "URL of the End-User's Web page or blog. This Web page SHOULD contain information published by the End-User or an organization that the End-User is affiliated with"
+        },
+        "address": {
+          "description": "Structure including the End-User's preferred postal address",
+          "$ref": "#/definitions/GeographicAddressType"
+        },
+        "legalId": {
+          "description": "Identification documentation of the contact",
+          "items": {
+            "$ref": "#/definitions/IdentificationType"
+          },
+          "type": "array"
+        },
+        "userAssets": {
+          "description": "List of additional profile information",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserAssetType"
+          }
+        },
+        "@type": {
+          "description": "type of entity",
+          "type": "string"
+        },
+        "@baseType": {
+          "description": "base type of entity",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "location where to retrieve a schema representing the entity"
+        }
+      },
+      "required": [
+        "sub",
+        "name"
+      ]
+    },
+    "GeographicAddressType": {
+      "properties": {
+        "streetNr": {
+          "type": "string",
+          "description": "Required if href not included. Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses"
+        },
+        "streetNrSuffix": {
+          "type": "string",
+          "description": "The street number suffix (or suffix of first number for  aranged address)"
+        },
+        "streetNrLast": {
+          "type": "string",
+          "description": "Last number in a range of street numbers allocated to a property"
+        },
+        "streetNrLastSuffix": {
+          "type": "string",
+          "description": "Last street number suffix for a ranged address"
+        },
+        "streetName": {
+          "type": "string",
+          "description": "Required if href not included. Name of the street or other street type"
+        },
+        "streetType": {
+          "type": "string",
+          "description": "Required if href not included. Alley, avenue, street, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf"
+        },
+        "streetSuffix": {
+          "type": "string",
+          "description": "A modifier denoting a relative direction (E, W, S, N)"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Required if href not included. Descriptor for a postal delivery area (also known as zipcode)"
+        },
+        "locality": {
+          "type": "string",
+          "description": "Required if href not included. An area of defined or undefined boundaries within a local authority or other legislatively defined area, usually rural or semi-rural in nature, or a suburb, a bounded locality within a city, town or shire principally of urban character "
+        },
+        "city": {
+          "type": "string",
+          "description": "City that the address is in"
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "description": "Required if href not included. the State or Province that the address is in"
+        },
+        "country": {
+          "type": "string",
+          "description": "Required if href not included. Country that the address is in"
+        },
+        "geographicLocation": {
+          "$ref": "#/definitions/GeographicLocationRefOrValueType",
+          "description": "A geo location reference, allows describing through coordinate(s) a point, a line or a space"
+        },
+        "geographicSubAddress": {
+          "$ref": "#/definitions/GeographicSubAddressType",
+          "description": "A list of sub addresses. It is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building."
+        },
+        "@type": {
+          "type": "string",
+          "description": "Indicates the type of the resource for extensibility purposes. Here can be UrbanPropertyAddress, FormattedAddress, JapanesePropertyAddress , AustralianPropertyAddress, etc"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A Link to the schema describing this REST Resource. The basic resource describes UrbanPropertyAddress but a schema could be used for other property address description"
+        }
+      },
+      "required": [
+        "streetNr",
+        "streetName",
+        "streetType",
+        "postcode",
+        "locality",
+        "stateOrProvince",
+        "country"
+      ]
+    },
+    "GeographicSubAddressType": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "type of subAddress. It can be a subunit or a private street."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subAddress to identify it with a meaningful identification"
+        },
+        "subUnitType": {
+          "type": "string",
+          "description": "the type of subunit (e.g.: BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF)"
+        },
+        "subUnitNumber": {
+          "type": "string",
+          "description": "the discriminator used for the subunit often just a simple number (e.g.: 5 for FLAT 5), may also be a range"
+        },
+        "levelType": {
+          "type": "string",
+          "description": "Describes level types within a building (e.g.: BASEMENT) "
+        },
+        "levelNumber": {
+          "type": "string",
+          "description": "used where a level type may be repeated (e.g.: BASEMENT 1, BASEMENT 2)"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "Allows for buildings that have well-known names"
+        },
+        "privateStreetName": {
+          "type": "string",
+          "description": "private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office"
+        },
+        "privateStreetNumber": {
+          "type": "string",
+          "description": "Private streets numbers internal to a private street"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Indicates the type of the subresource for extensibility purposes"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A Link to the schema describing this REST subResource to allow for extensions"
+        }
+      }
+    },
+    "GeographicLocationRefOrValueType": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the location entity within the server"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the location entity. An URI used to query the entity resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a GeoLocation"
+        },
+        "type": {
+          "type": "string",
+          "description": "allows describing Geolocation form: it could be a point, a line, a polygon, a cylinder, etc...."
+        },
+        "geographicPoint": {
+          "$ref": "#/definitions/GeographicPointType",
+          "description": "A list of geo points. A GeoPoint defines a geographic point through coordinates"
+        },
+        "@type": {
+          "type": "string",
+          "description": "Indicates the type of the resource for extensibility purposes"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A Link to the schema describing this REST Resource"
+        }
+      }
+    },
+    "GeographicPointType": {
+      "properties": {
+        "accuracy": {
+          "type": "string",
+          "description": "Accuracy of the coordinate specified"
+        },
+        "spatialRef": {
+          "type": "string",
+          "description": "Geocoding referential"
+        },
+        "x": {
+          "type": "string",
+          "description": ". x coordinate (usually latitude)"
+        },
+        "y": {
+          "type": "string",
+          "description": "y coordinate (usually longitude)"
+        },
+        "z": {
+          "type": "string",
+          "description": "z coordinate (usually elevation)"
+        }
+      },
+      "required": [
+        "accuracy",
+        "spatialRef",
+        "x",
+        "y"
+      ]
+    },
+    "IdentificationType": {
+      "description": "Somebody's national ID",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "Type of document (e.g.: DNI, passport, RUT, driver's license, etc.)"
+        },
+        "identificationId": {
+          "type": "string",
+          "description": "Identification number of the document"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country that issued the document"
+        },
+        "issuingAuthority": {
+          "type": "string",
+          "description": "Authority that issued the legal identification (e.g.: social security, town hall, ...)"
+        },
+        "issuingDate": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Date when identification was issued"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A Link to the schema describing this REST subResource to allow for extensions"
+        }
+      },
+      "required": [
+        "@type",
+        "identificationId",
+        "country"
+      ]
+    },
+    "UserAssetType": {
+      "properties": {
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "customer",
+            "account",
+            "product",
+            "service",
+            "resource"
+          ],
+          "description": "Type of managed entity (e.g.: product, resource, service, customer, account)"
+        },
+        "assetType": {
+          "type": "string",
+          "enum": [
+            "mobile",
+            "landline",
+            "iptv",
+            "broadband",
+            "email",
+            "invoicing"
+          ],
+          "description": "Second level to define the type of managed element for product/service/resource managed entities (e.g.: mobile line subscription, video platform license, mobile equipment, etc). Allows identifying the specific asset within the server referenced. Supported values are implementation and application specific. Other values can be added if those listed are not enough"
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of referenced entity within the entity/asset pair (customerId, accountId, mobile line number, ...)"
+        },
+        "role": {
+          "type": "string",
+          "description": "Represents the part played by an individual in relation to being granted a set of entitlements for manageable assets (e.g.: owner, user, viewer, ...)"
+        },
+        "entitlement": {
+          "items": {
+            "$ref": "#/definitions/EntitlementType"
+          },
+          "type": "array",
+          "description": "information about individual entitlements to define access levels to operate over different functions that can be defined in an asset"
+        }
+      },
+      "required": [
+        "entityType",
+        "id"
+      ]
+    },
+    "EntitlementType": {
+      "properties": {
+        "function": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "function",
+        "action"
+      ]
+    }
+  },
+  "paths": {
+    "/userinfo": {
+      "get": {
+        "operationId": "retrieveUserIdentity",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "token to be passed as a header linked to the user whose identity is requested",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "To apply specific filter in the response ",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User identity information provided",
+            "schema": {
+              "$ref": "#/definitions/UserInfoType"
+            }
+          },
+          "400": {
+            "description": "Invalid Token"
+          },
+          "401": {
+            "description": "Invalid Token"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method not Allowed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Retrieve user identity information",
+        "tags": [
+          "userinfo"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "userinfo"
+    }
+  ]
+}
