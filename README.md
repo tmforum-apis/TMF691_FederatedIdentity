@@ -1,13 +1,8 @@
-# TMF691_FederatedIdentity
-TM Forum Open APIs (Apache 2.0) Federated Identity Management API
+# TMF691 FederatedIdentity
 
-Identity management is about the management of principals of any kind (persons, objects, …)
-and their access to resources in an open environment which can span across different
-enterprise boundaries. It relies on authentication, authorization and consent mechanisms
-to protect privacy with a simple and easy user experience. Different parties can provide
-identity services (operators, social networks, GSMA, …).
+TM Forum Open API (Apache 2.0) FederatedIdentity API.
 
-To access this API; (the Specification, Postman Collection, Swagger file, Swagger-UI,
-Reference Implementation, Conformance Profile, and CTK) go to the Open API table at:
+and their access to resources in an open environment which can span across different enterprise boundaries. It relies on authentication, authorization and consent mechanisms to protect privacy with a simple and easy user experience. Different parties can provide identity services (operators, social networks, GSMA, …).
 
-https://projects.tmforum.org/wiki/display/API/Open+API+Table
+The resources in this repository are a mirror of the official versions, published here for your convenience.
+The authoritative source of information for this API is: https://www.tmforum.org/oda/open-apis/directory/
